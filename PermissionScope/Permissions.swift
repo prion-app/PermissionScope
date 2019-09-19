@@ -7,19 +7,16 @@
 //
 
 import Foundation
-import CoreLocation
 import AddressBook
 import AVFoundation
 import Photos
 import EventKit
-import CoreBluetooth
-import CoreMotion
 import CloudKit
 import Accounts
 
 /**
-*  Protocol for permission configurations.
-*/
+ *  Protocol for permission configurations.
+ */
 @objc public protocol Permission {
     /// Permission type
     var type: PermissionType { get }
@@ -32,14 +29,6 @@ import Accounts
     public init(notificationCategories: Set<UIUserNotificationCategory>? = nil) {
         self.notificationCategories = notificationCategories
     }
-}
-
-@objc public class LocationWhileInUsePermission: NSObject, Permission {
-    public let type: PermissionType = .locationInUse
-}
-
-@objc public class LocationAlwaysPermission: NSObject, Permission {
-    public let type: PermissionType = .locationAlways
 }
 
 @objc public class ContactsPermission: NSObject, Permission {
@@ -67,12 +56,4 @@ public typealias requestPermissionShowAlert     = (PermissionType) -> Void
 
 @objc public class RemindersPermission: NSObject, Permission {
     public let type: PermissionType = .reminders
-}
-
-@objc public class BluetoothPermission: NSObject, Permission {
-    public let type: PermissionType = .bluetooth
-}
-
-@objc public class MotionPermission: NSObject, Permission {
-    public let type: PermissionType = .motion
 }
